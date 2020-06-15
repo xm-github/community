@@ -1,0 +1,12 @@
+github:
+  client:
+    id: a9e8cdb105d994813b0e
+    secret: 9f0eb0250ae957c4c9e9620ceca8b02aa69a321c
+  redirect:
+    uri: http://localhost:8080/callback
+spring:
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/community?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
