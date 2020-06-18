@@ -4,6 +4,7 @@ import com.xm.community.community.mapper.QuestionMapper;
 import com.xm.community.community.mapper.UserMapper;
 import com.xm.community.community.model.Question;
 import com.xm.community.community.model.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,9 @@ public class PublishController {
         HttpServletRequest request,
         Model model
             ){
+        model.addAttribute("title",title);
+        model.addAttribute("description",description);
+        model.addAttribute("tag",tag);
         if (title == null||title=="") {
             model.addAttribute("error","标题不能为空");
             return "publish";
@@ -44,10 +48,6 @@ public class PublishController {
             model.addAttribute("error","标签不能为空");
             return "publish";
         }
-
-        model.addAttribute("title",title);
-        model.addAttribute("description",description);
-        model.addAttribute("tag",tag);
         User user=null;
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
@@ -71,6 +71,7 @@ public class PublishController {
         question.setCreator(user.getId());
         question.setGmtCreate(System.currentTimeMillis());
         question.setGmtModified(question.getGmtCreate());
+        System.out.println(question);
         questionMapper.create(question);
         return "redirect:/";
     }

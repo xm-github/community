@@ -5,6 +5,8 @@ public class Question {
     private String title;
     private String description;
     private String tag;
+    /* private Long gmt_create;
+     private Long gmt_modified;*/
     private Long gmtCreate;
     private Long gmtModified;
     private Integer creator;
@@ -43,6 +45,22 @@ public class Question {
     public void setTag(String tag) {
         this.tag = tag;
     }
+
+  /*  public Long getGmt_create() {
+        return gmt_create;
+    }
+
+    public void setGmt_create(Long gmt_create) {
+        this.gmt_create = gmt_create;
+    }
+
+    public Long getGmt_modified() {
+        return gmt_modified;
+    }
+
+    public void setGmt_modified(Long gmt_modified) {
+        this.gmt_modified = gmt_modified;
+    }*/
 
     public Long getGmtCreate() {
         return gmtCreate;
@@ -91,4 +109,5 @@ public class Question {
     public void setLikeCount(Integer likeCount) {
         LikeCount = likeCount;
     }
+
 }
