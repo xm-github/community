@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.community.community.mapper.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.xm.community.community.model.Comment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="parent_id" property="parent_id" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="commentator" property="commentator" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmt_create" jdbcType="BIGINT" />
+    <result column="gmt_modified" property="gmt_modified" jdbcType="BIGINT" />
+    <result column="like_count" property="like_count" jdbcType="BIGINT" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xm.community.community.model.Comment" useGeneratedKeys="true" keyProperty="id" >
+    insert into comment (parent_id, type, commentator, 
+      gmt_create, gmt_modified, like_count, 
+      content)
+    values (#{parent_id,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{commentator,jdbcType=INTEGER}, 
+      #{gmt_create,jdbcType=BIGINT}, #{gmt_modified,jdbcType=BIGINT}, #{like_count,jdbcType=BIGINT}, 
+      #{content,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xm.community.community.model.Comment" >
+    update comment
+    set parent_id = #{parent_id,jdbcType=BIGINT},
+      type = #{type,jdbcType=INTEGER},
+      commentator = #{commentator,jdbcType=INTEGER},
+      gmt_create = #{gmt_create,jdbcType=BIGINT},
+      gmt_modified = #{gmt_modified,jdbcType=BIGINT},
+      like_count = #{like_count,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content
+    from comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content
+    from comment
+  </select>
+</mapper>

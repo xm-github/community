@@ -1,9 +1,16 @@
-package com.xm.community.community.model;
+package com.xm.community.community.dto;
 
+import com.xm.community.community.model.User;
 import lombok.Data;
 
+/**
+ * @author XM
+ * @version 1.0
+ * @data 2020-06-22
+ * @description QuestionDTO
+ */
 @Data
-public class Question {
+public class QuestionDTO {
     private Integer id;
     private String title;
     private String description;
@@ -16,4 +23,5 @@ public class Question {
     private Integer viewCount;
     private Integer commentCount;
     private Integer LikeCount;
+    private User user;
 }

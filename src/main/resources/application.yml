@@ -1,10 +1,19 @@
 github:
   client:
     id: a9e8cdb105d994813b0e
-    secret: 8e4c6c32f3d8fa399f19d8190980b733df35ea50
+    secret: b204c12557dbe7fe52813963777ecc9058ed71cf
   redirect:
     uri: http://localhost:8080/callback
 spring:
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+    freemarker:
+      cache: false    #页面不加载缓存，修改即时生效
+  thymeleaf:
+    cache: false
   datasource:
     username: root
     password: root
@@ -13,3 +22,4 @@ spring:
 mybatis:
   configuration:
     setmapUnderscoreToCamelCase: true
+    map-underscore-to-camel-case: true
