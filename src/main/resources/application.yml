@@ -1,7 +1,7 @@
 github:
   client:
     id: a9e8cdb105d994813b0e
-    secret: b204c12557dbe7fe52813963777ecc9058ed71cf
+    secret: da7709fc4f8123f564f86a25a736802f2799eb8b
   redirect:
     uri: http://localhost:8080/callback
 spring:
@@ -23,3 +23,6 @@ mybatis:
   configuration:
     setmapUnderscoreToCamelCase: true
     map-underscore-to-camel-case: true
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.xm.community.community.model
+  mapper-locations: classpath:com.xm.community.community.mapper/*.xml

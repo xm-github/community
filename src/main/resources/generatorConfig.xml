@@ -5,7 +5,7 @@
 <!-- 配置生成器 -->
 <generatorConfiguration>
 
-		<context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple">
+		<context id="mysql" defaultModelType="flat"  targetRuntime="MyBatis3">
 
 		<!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
 		<property name="autoDelimitKeywords" value="false" />
@@ -21,7 +21,7 @@
 		<!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
-
+			<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
 		<commentGenerator>
 			<property name="suppressDate" value="true" />
 			<property name="suppressAllComments" value="true" />
@@ -29,7 +29,9 @@
 
 		<!-- 必须要有的，使用这个配置链接数据库 @TODO:是否可以扩展 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql:///community" userId="root" password="root">
+						connectionURL="jdbc:mysql:///community"
+						userId="root"
+						password="root">
 			<!-- 这里面可以设置property属性，每一个property属性都设置到配置的Driver上 -->
 		</jdbcConnection>
 
@@ -47,6 +49,7 @@
 			targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制； targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录 -->
 		<javaModelGenerator targetPackage="com.xm.community.community.model"
 							targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
 			<!-- for MyBatis3/MyBatis3Simple 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter； -->
 			<property name="constructorBased" value="false" />
 
@@ -80,8 +83,8 @@
 				value=""/> -->
 		</javaClientGenerator>
 
-		<table tableName="comment">
-			<property name="useActualColumnNames" value="true"/>
+		<table tableName="question">
+			<property name="useActualColumnNames" value="false"/>
 			<property name="constructorBased" value="false" />
 			<generatedKey column="id" sqlStatement="JDBC" />
 		</table>
